@@ -12,9 +12,9 @@ class SpamhausCompositeBlockingList implements SpamFilterInterface {
      * @return int
      *   5 if it was found in the blacklist or 0 if not
      */
-    public static function getScore(&$clientFIelds, &$messageFields, &$spamFields) {
-        if (!empty($clientFIelds['IP']) && strpos($clientFIelds['IP'], '.') !== false) {
-            $parts = explode('.', $clientFIelds['IP']);
+    public static function getScore(&$clientFields, &$messageFields, &$spamFields) {
+        if (!empty($clientFields['IP']) && strpos($clientFields['IP'], '.') !== false) {
+            $parts = explode('.', $clientFields['IP']);
             $parts = array_reverse($parts);
             $ip = implode('.', $parts);
             $result = dns_get_record($ip . '.cbl.abuseat.org');
@@ -29,7 +29,7 @@ class SpamhausCompositeBlockingList implements SpamFilterInterface {
         return 0;
     }
 
-    public static function flagAsSpam(&$clientFIelds, &$messageFields, &$spamFields) {
+    public static function flagAsSpam(&$clientFields, &$messageFields, &$spamFields) {
         // At this time, this RBL is read only.
     }
 
