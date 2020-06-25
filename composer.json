@@ -1,0 +1,6 @@
+{
+  "name": "lightningsdk/spamhaus",
+  "type": "library",
+  "description": "Adds spamhaus IP lookup for message handling.",
+  "version": "1.0.0"
+}
